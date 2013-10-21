@@ -1,0 +1,18 @@
+A bunch of perl scripts to process numbers
+
+ticker.pl - Get trades from MtGOX
+	options
+		-s since : the time to start, expressed as seconds since the epoch
+			default is Oct 15, 2013 00:00:00 GMT
+		-d : show debug output
+	outputs:
+		microtime of trade
+		trade price
+		trade qty
+timebucket.pl
+	options
+		-s size : bucket size / divisor for first column
+		-d : show debug output
+		-z : sparse output
+ema.pl
+ticks.out
