@@ -1,37 +1,40 @@
 #!/usr/bin/env perl
 use Data::Dumper;
 use Getopt::Std;
-my %options={};
-getopts("de:",\%options);
+$| = 1;
 
-# -e4:10,20
+my %options={};
+getopts("pdc:s:i:",\%options);
+
+# -c4
 
 my $DEBUG = defined $options{d} ? 1 : 0;
-my $emastr = $options{e};
-print Dumper("emastr:",$emastr);
+my $passthru = defined $options{p} ? 1 : 0;
+my $col = $options{c};
+my $intervals = $options{i};
 
-my ($col,$istr) = split(/:/,$emastr);
-my (@emas) = split(/,/,$istr);
+print "col:$col\n" if $DEBUG;
 
-print Dumper("emas:",@emas);
-exit;
-
+my $lastrow = "";
+my $emaLast = 0;
 while(<>){
-	chomp;
-	my ($microtime, $price, $amount) = split(/\t/);
-	my $second = int $microtime/$bucketsize;
-	my $average = $vol ? $spend/$vol : 0;
-	while ($second > $thisSecond) {
-		##print aggregates from last second
-		print "$thisSecond\t$spend\t$vol\t$average\n" unless ($thisSecond == 0);
-		if ($sparse || $thisSecond == 0){
-			$thisSecond = $second;
+	my $ema;
+	if(/^#/){
+		print $_ if $passthru;
+	}else{
+		print "#" . $_ if $passthru;
+		chomp;
+		###
+		my @cols = split(/\t/);
+		my $val = $cols[$col-1];
+		if($emaLast == 0){
+			$ema = $val;
 		}else{
-			$thisSecond++;
+			my $k = 2/($intervals+1);
+			$ema = $val * $k + $emaLast * (1-$k);
 		}
-		$vol = $spend = 0;
+		$lastrow = "$_\t$ema";
+		print $lastrow . "\n";
+		$emaLast = $ema;
 	}
-	$vol += $amount;
-	$spend += $price*$amount;
-	print "IN> $_\n" if $DEBUG;
 }

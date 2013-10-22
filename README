@@ -14,5 +14,5 @@ timebucket.pl
 		-s size : bucket size / divisor for first column
 		-d : show debug output
 		-z : sparse output
-ema.pl
+ema.pl - calculate EMA
 ticks.out

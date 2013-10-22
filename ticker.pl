@@ -4,8 +4,8 @@ use Data::Dumper;
 use JSON;
 use Getopt::Std;
 use Time::HiRes qw ( setitimer ITIMER_REAL time );
-
 $| = 1;
+
 use constant STARTEPOCH => 1381795200; #2013-10-15:00:00.000Z
 use constant WAITTIME => 5;
 
