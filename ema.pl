@@ -4,7 +4,7 @@ use Getopt::Std;
 $| = 1;
 
 my %options={};
-getopts("pdc:s:i:",\%options);
+getopts("pdc:i:",\%options);
 
 # -c4
 

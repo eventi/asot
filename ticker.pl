@@ -6,8 +6,8 @@ use Getopt::Std;
 use Time::HiRes qw ( setitimer ITIMER_REAL time );
 $| = 1;
 
-use constant STARTEPOCH => 1381795200; #2013-10-15:00:00.000Z
-use constant WAITTIME => 5;
+use constant STARTEPOCH => 1382140800; #2013-10-19:00:00.000Z
+use constant WAITTIME => 1;
 
 my %options={};
 getopts("s:d",\%options);

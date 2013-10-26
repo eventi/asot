@@ -15,4 +15,9 @@ timebucket.pl
 		-d : show debug output
 		-z : sparse output
 ema.pl - calculate EMA
+	options
+		-d : show debug output
+		-p : passthru input lines
+		-c : column to process
+		-i : intervals for moving average
 ticks.out
