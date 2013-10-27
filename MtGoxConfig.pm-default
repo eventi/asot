@@ -4,11 +4,9 @@ use warnings;
 
 use base 'Exporter';
 
-use constant APIKEY => "a959cc22-0167-42e1-841d-2dd42b0ff04f";
-use constant APISECRET => "mVonW0ti475+WLN5geWqDPplVJKPgdN9rOb371AnYkH66w3uCjMC6H+W6yrx1jsr+ITCXczR6G5VynzIRZei1g==";
+use constant APIKEY => "";
+use constant APISECRET => "";
 
-#our @EXPORT_OK = ('APIKEY','APISECRET');
-our @EXPORT = ('APIKEY','APISECRET');
-#our @EXPORT = qw(APIKEY APISECRET);
+our @EXPORT = qw(APIKEY APISECRET);
 
 1;

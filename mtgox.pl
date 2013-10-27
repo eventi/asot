@@ -20,9 +20,12 @@ my $funds = $mtgox->call_auth('getFunds');
 print "Funds: " . Dumper($funds);
 
 # convenience methods built on the core API
-my ( $btcs, $usds ) = $mtgox->balances;
-print "btc: $btcs\tusd: $usds\n";
-my $rate = $mtgox->clearing_rate( 'asks', 200, 'BTC' );
-print "rate ASK 200BTC: $rate\n";
-$rate    = $mtgox->clearing_rate( 'bids',  42, 'USD' );
-print "rate BID 42USD: $rate\n";
+my $rate = $mtgox->clearing_rate( 'asks', 0.001, 'BTC' );
+print "rate 1.001btc: $rate\n";
+
+my $info = $mtgox->call_auth('BTCUSD/money/order/add',{
+	type=>'ask',
+	amount_int=>100
+});
+print "HERE\n";
+print Dumper($info);
