@@ -28,7 +28,7 @@ while(<>){
 		my $div  = $macd-$ema9;
 		my $strat = "HOLD";
 		print "macd: $macd\tema: $ema\tdiv: $div\n" if $DEBUG;
-		if($macd < 0){
+		if($ema9 < 0){
 			$strat = "SELL";
 		}else{
 			if($macd > 0){
