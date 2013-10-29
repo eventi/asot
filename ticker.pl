@@ -16,7 +16,7 @@ my $DEBUG = defined $options{d} ? 1 : 0;
 my $since = defined $options{s} ? $options{s} : STARTEPOCH * 1000 * 1000;
 
 $SIG{ALRM} = sub {
-	print "IN VTALRM\n" if $DEBUG;
+	print "IN VTALRM: since=$since\n" if $DEBUG;
 	my $json = get("http://data.mtgox.com/api/2/BTCUSD/money/trades/fetch?since=$since");
 	my @trades = @{(from_json($json))->{data}};
 
