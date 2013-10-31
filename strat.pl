@@ -18,7 +18,7 @@ my $divrise = 0.1;
 my $signals = 1;
 #long and short ema values?
 
-my %options={};
+my %options;
 getopts("pdm:e:a:",\%options);
 
 # -c4,5
@@ -37,7 +37,7 @@ print Dumper($divdip,$macrise,$divrise,$signals) if $DEBUG;
 
 print "macd col: $macd_c\tdiv col: $div_c\n" if $DEBUG;
 
-my $laststrat;
+my $laststrat = "BOGUS";
 my $samesignal = 0;
 
 while(<STDIN>){
